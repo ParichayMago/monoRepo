@@ -66,23 +66,25 @@ const Home = () => {
 
       return await response.json();
     } catch (error) {
+      setIsLoading(false)
       console.error("Error fetching user:", error);
       return null;
     }
   };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      // let token = Cookies.get("token");
-      // console.log("BEFORE token ", access_token);
+    try {
+      const fetchUser = async () => {
+        // let token = Cookies.get("token");
+        // console.log("BEFORE token ", access_token);
 
-      // let access_token = localStorage.getItem("accessToken");
+        // let access_token = localStorage.getItem("accessToken");
 
-      // if (access_token) {
-      //   console.log("found token ", access_token);
-      //   const userData = await token_basic_insta(access_token);
-      //   setUser(userData!.user_basic);
-      // } else {
+        // if (access_token) {
+        //   console.log("found token ", access_token);
+        //   const userData = await token_basic_insta(access_token);
+        //   setUser(userData!.user_basic);
+        // } else {
         console.log("Token unidentifed or not workin");
         const code = localStorage.getItem("code");
 
@@ -97,16 +99,20 @@ const Home = () => {
           console.log("could not found token or code");
           navigate("/");
         }
-      // }
+        // }
 
-      // token = Cookies.get("token");
-      // console.log("AFTER token ", token);
-      console.log(localStorage.getItem("accessToken"));
+        // token = Cookies.get("token");
+        // console.log("AFTER token ", token);
+        console.log(localStorage.getItem("accessToken"));
 
+        setIsLoading(false);
+      };
+      fetchUser();
+    } catch (e) {
       setIsLoading(false);
-    };
+      console.log(e);
+    }
 
-    fetchUser();
   }, []);
 
   return (

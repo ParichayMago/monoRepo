@@ -4,6 +4,7 @@ const NavigationBar = () => {
   const navigate = useNavigate();
 
   const handleMessage = ()=> {
+    console.log("message")
     navigate("/message");
   }
 
@@ -26,7 +27,7 @@ const NavigationBar = () => {
           </div>
           <div className="flex items-center space-x-4">
             <div>
-              <button onClick={()=>handleMessage}>Messages</button>
+              <button onClick={handleMessage}>Messages</button>
             </div>
             <button className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
               <svg
