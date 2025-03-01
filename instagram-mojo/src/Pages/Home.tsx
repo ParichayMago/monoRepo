@@ -47,7 +47,7 @@ const Home = () => {
   const basic_insta = async (code: string): Promise<IApiiCall | null> => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_url}/api/user/handleAuth`,
+        `http://localhost:3000/api/user/handleAuth`,
         {
           method: "POST",
           credentials: "include",

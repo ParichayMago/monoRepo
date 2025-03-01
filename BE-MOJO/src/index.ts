@@ -10,7 +10,11 @@ const app:Express = express();
 const port = process.env.PORT || 4001;
 
 // Configure CORS first
-app.use(cors());
+app.use(cors({
+  origin: 'https://localhost:5173', // your frontend origin
+  credentials: true,
+}));
+
 
 // Configure body parsing middleware with limits and error handling
 app.use(express.json())
