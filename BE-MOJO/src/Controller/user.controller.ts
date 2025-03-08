@@ -7,8 +7,8 @@ export const testing = async(
   res: Response
 ) => {
   try {
+    console.log("something working");
     res.json({message:"Working"})
-
   } catch(e){
     res.json({"error":e})
   }
@@ -33,6 +33,7 @@ export const handleAuth = async (
       const code = body.code;
       console.log("This is code:", code);
       let temp = await codeToTempToken(code);
+      // code -> temp token -> perm token
 
       console.log("This is temp: ", temp);
 
